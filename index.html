@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Glycolysis Active-Recall Trainer</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Glycolysis Trainer</h1>
+      <p class="subtitle">
+        Master all 10 enzymes, co-substrates, and co-products
+      </p>
+
+      <div class="tabs">
+        <button
+          class="tab-btn active"
+          id="tabFlash"
+          onclick="switchMode('flash')"
+        >
+          Step-by-Step Cards
+        </button>
+        <button class="tab-btn" id="tabQuiz" onclick="switchMode('quiz')">
+          Random Quiz Mode
+        </button>
+      </div>
+
+      <!-- Flashcard View -->
+      <div id="flashcardView" class="card">
+        <div id="stepBadge" class="step-badge">Stage 1: Investment</div>
+        <div id="reactionHeader" class="reaction-title">Loading...</div>
+
+        <div
+          class="hidden-field"
+          id="boxEnzyme"
+          onclick="revealItem('boxEnzyme')"
+        >
+          <div class="field-label">Enzyme (Click to reveal)</div>
+          <div class="field-value" id="valEnzyme">???</div>
+        </div>
+
+        <div
+          class="hidden-field"
+          id="boxCosub"
+          onclick="revealItem('boxCosub')"
+        >
+          <div class="field-label">Co-substrate / Input (Click to reveal)</div>
+          <div class="field-value" id="valCosub">???</div>
+        </div>
+
+        <div
+          class="hidden-field"
+          id="boxCoprod"
+          onclick="revealItem('boxCoprod')"
+        >
+          <div class="field-label">Co-product / Output (Click to reveal)</div>
+          <div class="field-value" id="valCoprod">???</div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-secondary" onclick="prevStep()">
+            Previous
+          </button>
+          <button class="btn btn-secondary" onclick="revealAll()">
+            Reveal All
+          </button>
+          <button class="btn" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Quiz View -->
+      <div id="quizView" class="card" style="display: none">
+        <div class="score-display" id="scoreDisplay">Score: 0 / 0</div>
+        <div class="step-badge" id="quizBadge">Question</div>
+        <div class="reaction-title" id="quizQuestion">Loading question...</div>
+        <div id="quizOptions"></div>
+        <div class="nav-btns" style="justify-content: flex-end">
+          <button
+            class="btn"
+            id="quizNextBtn"
+            onclick="generateQuizQuestion()"
+            style="display: none"
+          >
+            Next Question
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
